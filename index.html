@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.css" />
-    <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
-    <script src="./js/script.js"></script>
+
     <link rel="stylesheet" href="style/card.css" />
     <title>Pokédex</title>
   </head>
-  <body>
+  <body onload="init()">
     <header class="header">
       <img class="img-header" src="./assets/img/pokeapi.png" alt="" />
       <input
@@ -20,7 +19,9 @@
       />
     </header>
     <div class="content" id="content"></div>
-    <button onclick="getPokedexByName('kanto')">kanto</button>
-    <button onclick="getPokedexByName('original-johto')">Johto</button>
   </body>
+  <script src="./js/pokeapi-js-wrapper.js"></script>
+
+  <script src="./js/template.js"></script>
+  <script src="./js/script.js"></script>
 </html>
