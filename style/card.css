@@ -1,3 +1,9 @@
+h2 {
+  text-transform: uppercase;
+}
+span {
+  text-transform: uppercase;
+}
 .pokemon-card {
   width: 250px;
   height: 350px;
