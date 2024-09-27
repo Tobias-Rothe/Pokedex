@@ -32,13 +32,19 @@ async function loadKantoPokemon() {
 async function init() {
   await loadKantoPokemon();
   renderPokemonCardSmall();
+  addHoverEffect();
 }
 
-// async function getPokedexByName(region) {
-//   const pokedex = await P.getPokedexByName(region);
-//   for (let i = 0; i < pokedex.pokemon_entries.length; i++) {
-//     let pokemonEntry = pokedex.pokemon_entries[i];
-//     let pokemonName = pokemonEntry.pokemon_species.name;
-//     let pokemonType = pokemonEntry;
-//   }
-// }
+function addHoverEffect() {
+  const cards = document.querySelectorAll(".pokemon-card"); // Alle Karten auswählen
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+
+      card.style.setProperty("--mouse-x", (x - 0.5).toString());
+      card.style.setProperty("--mouse-y", (y - 0.5).toString());
+    });
+  });
+}
