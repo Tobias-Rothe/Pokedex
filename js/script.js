@@ -7,27 +7,31 @@ const customOptions = {
   cacheImages: true,
 };
 
-let endlimit = 10;
+let loadLimit = 10;
 
 function showLoadingSpinner() {
   document.getElementById("dialog-loding-spinner").classList.remove("d-none");
   document.getElementById("content").classList.add("d-none");
 }
+
 function hideLoadingSpinner() {
   document.getElementById("dialog-loding-spinner").classList.add("d-none");
   document.getElementById("content").classList.remove("d-none");
 }
+
 const P = new Pokedex.Pokedex(customOptions);
 let pokemonData = [];
 let pokemonSpeciesArray = [];
-console.log(pokemonData);
 
-async function loadPokemonOnTheirId(end) {
-  pokemonData = [];
-  for (let i = 1; i <= end; i++) {
+async function loadPokemonOnTheirId() {
+  for (let i = pokemonData.length + 1; i <= loadLimit; i++) {
+    if (pokemonData.length > 150) return;
+
     let pokemon = await P.getPokemonByName(i);
+
     pokemonData.push(pokemon);
   }
+  loadLimit += 10;
 }
 async function loadPokemonSpeciesOnID(start, end) {
   for (let i = start; i <= end; i++) {
@@ -35,6 +39,7 @@ async function loadPokemonSpeciesOnID(start, end) {
     pokemonSpeciesArray.push(pokemonSpecie);
   }
 }
+
 let habitats = [];
 
 async function getHabitats() {
@@ -49,26 +54,22 @@ async function getHabitats() {
 async function renderPokemonCardSmall() {
   let pokeRef = document.getElementById("content");
   pokeRef.innerHTML = "";
-
   for (let index = 0; index < pokemonData.length; index++) {
     const pokeIndex = pokemonData[index];
-
     pokeRef.innerHTML += getCardTemplate(pokeIndex, index);
   }
 }
 
 async function renderMorePokemons() {
   showLoadingSpinner();
-
-  endlimit += 10;
   await loadKantoPokemon();
   renderPokemonCardSmall();
   hideLoadingSpinner();
+  addHoverEffect();
 }
 
 async function loadKantoPokemon() {
-  await loadPokemonOnTheirId(endlimit);
-  await loadPokemonSpeciesOnID(1, 151);
+  await loadPokemonOnTheirId();
 }
 
 async function init() {
@@ -78,7 +79,7 @@ async function init() {
   hideLoadingSpinner();
   addHoverEffect();
   getHabitats();
-  endlimit += 10;
+  addHoverEffect();
 }
 
 function searchAndShowPokemon() {
@@ -103,15 +104,25 @@ function renderSingleSmallCard(index) {
 }
 
 function showLargeCard(index) {
-  let largeCardRef = document.getElementById("largecard");
+  let largeCardRef = document.getElementById("loadingscreen-bg");
   largeCardRef.classList.remove("hidden");
-
   largeCardRef.innerHTML = getLargeCardTemplate(index);
+  disableScroll();
   console.log(index);
 }
+
 function closeLargeCard() {
-  let largeCardRef = document.getElementById("largecard");
+  let largeCardRef = document.getElementById("loadingscreen-bg");
   largeCardRef.classList.add("hidden");
+  enableScroll();
+}
+
+function disableScroll() {
+  document.body.classList.add("remove-scrolling");
+}
+
+function enableScroll() {
+  document.body.classList.remove("remove-scrolling");
 }
 
 function addHoverEffect() {
@@ -126,5 +137,3 @@ function addHoverEffect() {
     });
   });
 }
-
-console.log(habitats);

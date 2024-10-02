@@ -9,12 +9,16 @@ body {
   background-attachment: fixed;
 }
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-around;
   background-color: #f70101;
   width: 100%;
   align-items: center;
   height: 100px;
+  z-index: 11;
 }
 .inputfield {
   justify-content: center;
@@ -46,4 +50,35 @@ body {
 }
 .d-none {
   display: none;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 40px;
+}
+.btn {
+  padding: 8px;
+  background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 24px;
+}
+.remove-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+.type-svg {
+  width: 20px;
+  height: auto;
+}
+.type-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100vw;
+  padding: 5px 15px;
 }

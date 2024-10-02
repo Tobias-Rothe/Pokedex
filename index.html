@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="style/loadingscreen.css" />
     <link rel="stylesheet" href="style/mediaquerry.css" />
     <link rel="stylesheet" href="style/lagecard.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/pokeball.png"
+      type="image/x-icon"
+    />
     <title>Pokédex</title>
   </head>
   <body onload="init()">
@@ -61,14 +66,24 @@
         required="text"
       />
     </header>
-
-    <div id="largecard" class="largecard hidden pokemoncard"></div>
+    <div id="loadingscreen-bg" class="loadingscreen-bg hidden">
+      <div class="largecard">
+        <div
+          class="largecard Pokemon-card"
+          onclick="closeLargeCard()"
+          id="largecard"
+        ></div>
+      </div>
+    </div>
     <div class="content" id="content"></div>
-    <div><button onclick="renderMorePokemons()">render</button></div>
+    <div class="button">
+      <button class="btn" onclick="renderMorePokemons()">
+        Show more Pokemons
+      </button>
+    </div>
   </body>
   <script src="./js/pokeapi-js-wrapper.js"></script>
-
+  <script src="./js/typeicon.js"></script>
   <script src="./js/template.js"></script>
   <script src="./js/script.js"></script>
-  <script src="js/loading-script.js"></script>
 </html>

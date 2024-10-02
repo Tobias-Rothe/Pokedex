@@ -12,36 +12,43 @@ function getCardTemplate(pokeIndex, index) {
         }" alt="">
         </div>
         <div class="card-details">
-          
           <div class="attack">
-            <span class="attack-name">${
-              pokeIndex.types.length > 1
-                ? `${pokeIndex.types[0].type.name} / ${pokeIndex.types[1].type.name}`
-                : pokeIndex.types[0].type.name
-            } </span>
-            
-          </div>
-          <div class="attack">
-            <span class="attack-name">${pokeIndex.moves[0].move.name}</span>
-            
-          </div>
-        </div>
-      </div>
-          </div>
-    `;
+          ${
+            pokeIndex.types.length > 1
+              ? `<span class="attack-name type-container"><img class="type-svg"  src="${
+                  germanTypes[pokeIndex.types[0].type.name].svg
+                }" alt="${
+                  germanTypes[pokeIndex.types[0].type.name].name
+                } Icon" />
+             ${germanTypes[pokeIndex.types[0].type.name].name}</span>
+                    <span class="type-container"><img class="type-svg" src="${
+                      germanTypes[pokeIndex.types[1].type.name].svg
+                    }" alt="${
+                  germanTypes[pokeIndex.types[1].type.name].name
+                } Icon" />
+             ${germanTypes[pokeIndex.types[1].type.name].name}</span>`
+              : ` <span class="type-container"><img class="type-svg" src="${
+                  germanTypes[pokeIndex.types[0].type.name].svg
+                }" alt="${
+                  germanTypes[pokeIndex.types[0].type.name].name
+                } Icon" />
+                   ${germanTypes[pokeIndex.types[0].type.name].name}</span>`
+          }</div>
+                    <div class="attack">
+                     <span >${pokeIndex.moves[0].move.name}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
 }
 
 function getLargeCardTemplate(index) {
   return /*html*/ `
+  <div onclick="closeLargeCard()" class="largecard">
      <h2> ${pokemonData[index].name} #${pokemonData[index].id}</h2>
-      <img  src="${pokemonData[index].sprites.other["home"].front_default}"/>
-      <p>Typ: ${
-        pokemonData[index].types.length > 1
-          ? `${pokemonData[index].types[0].type.name} / ${pokemonData[index].types[1].type.name}`
-          : pokemonData[index].types[0].type.name
-      }</p>
+      <img   src="${pokemonData[index].sprites.other["home"].front_default}"/>
+      <p>weight: ${pokemonData[0].weight} </p>
       <p>HP:${pokemonData[index].stats[0].base_stat}</p>
       <p>Attacken:${pokemonData[index].moves[0].move.name}</p>
-      <p><button onclick="closeLargeCard()">Schließen</button></p>
-  `;
+      </div> `;
 }
