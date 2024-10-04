@@ -6,8 +6,12 @@ const customOptions = {
   timeout: 5 * 1000, // 5s
   cacheImages: true,
 };
-
+const P = new Pokedex.Pokedex(customOptions);
+let pokemonData = [];
+let pokemonSpeciesArray = [];
 let loadLimit = 10;
+let activIndex = 0;
+let habitats = [];
 
 function showLoadingSpinner() {
   document.getElementById("dialog-loding-spinner").classList.remove("d-none");
@@ -19,28 +23,14 @@ function hideLoadingSpinner() {
   document.getElementById("content").classList.remove("d-none");
 }
 
-const P = new Pokedex.Pokedex(customOptions);
-let pokemonData = [];
-let pokemonSpeciesArray = [];
-
 async function loadPokemonOnTheirId() {
   for (let i = pokemonData.length + 1; i <= loadLimit; i++) {
     if (pokemonData.length > 150) return;
-
     let pokemon = await P.getPokemonByName(i);
-
     pokemonData.push(pokemon);
   }
   loadLimit += 10;
 }
-async function loadPokemonSpeciesOnID(start, end) {
-  for (let i = start; i <= end; i++) {
-    let pokemonSpecie = await P.getPokemonSpeciesByName(i);
-    pokemonSpeciesArray.push(pokemonSpecie);
-  }
-}
-
-let habitats = [];
 
 async function getHabitats() {
   for (let index = 0; index < pokemonSpeciesArray.length; index++) {
@@ -90,10 +80,12 @@ function searchAndShowPokemon() {
       if (pokemonData[index].name.startsWith(searchInput)) {
         document.getElementById("content").innerHTML +=
           renderSingleSmallCard(index);
+        addHoverEffect();
       }
     }
   } else {
     renderPokemonCardSmall();
+    addHoverEffect();
   }
 }
 
@@ -108,7 +100,6 @@ function showLargeCard(index) {
   largeCardRef.classList.remove("hidden");
   largeCardRef.innerHTML = getLargeCardTemplate(index);
   disableScroll();
-  console.log(index);
 }
 
 function closeLargeCard() {
@@ -136,4 +127,20 @@ function addHoverEffect() {
       card.style.setProperty("--mouse-y", (y - 0.5).toString());
     });
   });
+}
+
+function next() {
+  activIndex++;
+  if (activIndex >= pokemonData.length) {
+    activIndex = 0;
+  }
+  showLargeCard(activIndex);
+}
+
+function back() {
+  activIndex--;
+  if (activIndex < 0) {
+    activIndex = pokemonData.length - 1;
+  }
+  showLargeCard(activIndex);
 }

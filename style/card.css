@@ -120,14 +120,20 @@ span {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  background: #f4f3f3;
+
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #aaa;
 }
 
 .attack-name {
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
 }
 
 .attack-damage {
@@ -141,5 +147,5 @@ span {
 }
 
 .pokemon-card-container {
-  perspective: 1000px; /* Hinzufügen von Perspektive für 3D-Effekt */
+  perspective: 1000px;
 }

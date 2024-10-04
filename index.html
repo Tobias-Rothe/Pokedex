@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./style/card.css" />
     <link rel="stylesheet" href="./style/colors.css" />
     <link rel="stylesheet" href="style/loadingscreen.css" />
-    <link rel="stylesheet" href="style/mediaquerry.css" />
     <link rel="stylesheet" href="style/lagecard.css" />
+    <link rel="stylesheet" href="style/mediaquerry.css" />
     <link
       rel="shortcut icon"
       href="./assets/img/pokeball.png"
@@ -62,17 +62,14 @@
         oninput="searchAndShowPokemon()"
         class="inputfield"
         id="inputfield"
-        placeholder="Pokemon suchen..."
+        placeholder=" Search Pokemon..."
         required="text"
       />
     </header>
+
     <div id="loadingscreen-bg" class="loadingscreen-bg hidden">
       <div class="largecard">
-        <div
-          class="largecard Pokemon-card"
-          onclick="closeLargeCard()"
-          id="largecard"
-        ></div>
+        <div class="largecard Pokemon-card" id="largecard"></div>
       </div>
     </div>
     <div class="content" id="content"></div>

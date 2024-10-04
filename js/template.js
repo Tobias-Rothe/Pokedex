@@ -12,29 +12,34 @@ function getCardTemplate(pokeIndex, index) {
         }" alt="">
         </div>
         <div class="card-details">
-          <div class="attack">
-          ${
+          <div class="attack">${
             pokeIndex.types.length > 1
-              ? `<span class="attack-name type-container"><img class="type-svg"  src="${
-                  germanTypes[pokeIndex.types[0].type.name].svg
+              ? `<span class="attack-name type-container ${
+                  pokeIndex.types[0].type.name
+                }"><img class="type-svg "  src="${
+                  Typesicons[pokeIndex.types[0].type.name].svg
                 }" alt="${
-                  germanTypes[pokeIndex.types[0].type.name].name
+                  Typesicons[pokeIndex.types[0].type.name].name
                 } Icon" />
-             ${germanTypes[pokeIndex.types[0].type.name].name}</span>
-                    <span class="type-container"><img class="type-svg" src="${
-                      germanTypes[pokeIndex.types[1].type.name].svg
-                    }" alt="${
-                  germanTypes[pokeIndex.types[1].type.name].name
-                } Icon" />
-             ${germanTypes[pokeIndex.types[1].type.name].name}</span>`
-              : ` <span class="type-container"><img class="type-svg" src="${
-                  germanTypes[pokeIndex.types[0].type.name].svg
+             ${Typesicons[pokeIndex.types[0].type.name].name}</span>
+                    <span class="type-container attack  ${
+                      pokeIndex.types[1].type.name
+                    }"><img class="type-svg " src="${
+                  Typesicons[pokeIndex.types[1].type.name].svg
                 }" alt="${
-                  germanTypes[pokeIndex.types[0].type.name].name
+                  Typesicons[pokeIndex.types[1].type.name].name
                 } Icon" />
-                   ${germanTypes[pokeIndex.types[0].type.name].name}</span>`
+             ${Typesicons[pokeIndex.types[1].type.name].name}</span>`
+              : ` <span class="type-container attack ${
+                  pokeIndex.types[0].type.name
+                }"><img class="type-svg" src="${
+                  Typesicons[pokeIndex.types[0].type.name].svg
+                }" alt="${
+                  Typesicons[pokeIndex.types[0].type.name].name
+                } Icon" />
+                   ${Typesicons[pokeIndex.types[0].type.name].name}</span>`
           }</div>
-                    <div class="attack">
+                    <div class="attack-name">
                      <span >${pokeIndex.moves[0].move.name}</span>
                     </div>
                   </div>
@@ -42,13 +47,18 @@ function getCardTemplate(pokeIndex, index) {
               </div>`;
 }
 
-function getLargeCardTemplate(index) {
+function getLargeCardTemplate(index, pokemon) {
   return /*html*/ `
+   <button onclick="back()" class="btn"><</button>
   <div onclick="closeLargeCard()" class="largecard">
-     <h2> ${pokemonData[index].name} #${pokemonData[index].id}</h2>
-      <img   src="${pokemonData[index].sprites.other["home"].front_default}"/>
-      <p>weight: ${pokemonData[0].weight} </p>
-      <p>HP:${pokemonData[index].stats[0].base_stat}</p>
-      <p>Attacken:${pokemonData[index].moves[0].move.name}</p>
-      </div> `;
+   <h2> ${pokemonData[index].name} #${pokemonData[index].id}</h2>
+   <img src="${pokemonData[index].sprites.other["home"].front_default}"/>
+   <div class="large-style">
+      <p>weight:&nbsp; ${pokemonData[0].weight} </p>
+      <p> Height:&nbsp;${pokemonData[index].height}</p>
+      <p>Base Experience: &nbsp;${pokemonData[index].base_experience}</p>
+      <p>Moves: &nbsp; ${pokemonData[index].moves[3].move.name}</p>
+    </div>
+  </div>
+    <button class="btn" onclick="next()">></button>`;
 }

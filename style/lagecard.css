@@ -1,9 +1,6 @@
 .largecard {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
+  max-width: 400px;
+  width: calc(100% - 70px);
   height: 600px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -22,10 +19,6 @@
 .visible {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1.05);
-}
-
-.hidden {
-  display: none;
 }
 
 .largecard img {
@@ -57,8 +50,11 @@
   }
 }
 .loadingscreen-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 1;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -67,5 +63,14 @@
 .largecard img {
   height: 400px;
   width: 500px;
-  object-fit: cover;
+  object-fit: contain;
+}
+.large-style {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 12px;
+  border: 2px solid #aaa;
+}
+.hidden {
+  display: none;
 }
