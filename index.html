@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="./style/card.css" />
     <link rel="stylesheet" href="./style/colors.css" />
     <link rel="stylesheet" href="style/loadingscreen.css" />
-    <link rel="stylesheet" href="style/mediaquerry.css" />
     <link rel="stylesheet" href="style/lagecard.css" />
-    <link
-      rel="shortcut icon"
-      href="./assets/img/pokeball.png"
-      type="image/x-icon"
-    />
+    <link rel="stylesheet" href="style/mediaquerry.css" />
+    <link rel="shortcut icon" href="./assets/img/pokeball.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Pokédex</title>
   </head>
   <body onload="init()">
@@ -62,24 +60,19 @@
         oninput="searchAndShowPokemon()"
         class="inputfield"
         id="inputfield"
-        placeholder="Pokemon suchen..."
+        placeholder=" Search Pokemon..."
         required="text"
       />
     </header>
+
     <div id="loadingscreen-bg" class="loadingscreen-bg hidden">
       <div class="largecard">
-        <div
-          class="largecard Pokemon-card"
-          onclick="closeLargeCard()"
-          id="largecard"
-        ></div>
+        <div class="largecard Pokemon-card" id="largecard"></div>
       </div>
     </div>
     <div class="content" id="content"></div>
     <div class="button">
-      <button class="btn" onclick="renderMorePokemons()">
-        Show more Pokemons
-      </button>
+      <button class="btn" onclick="renderMorePokemons()">Show more Pokemons</button>
     </div>
   </body>
   <script src="./js/pokeapi-js-wrapper.js"></script>

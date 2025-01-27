@@ -1,7 +1,39 @@
+@media (max-width: 600px) {
+  .tab-container {
+    margin: 0;
+  }
+  .chart-container {
+    height: auto;
+    width: auto;
+  }
+}
+
 @media (max-width: 550px) {
+  .largecard {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .largecard img {
+    height: 200px;
+  }
+
+  .chart-container {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .largecard h2 {
+    font-size: 1.2em;
+  }
   .img-header {
     height: 60px;
   }
+  .large-style {
+    max-height: 350px;
+  }
+
   .inputfield {
     justify-content: center;
     width: 100px;
@@ -13,6 +45,111 @@
   .content {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 5%;
+  }
+  .largecard {
+    height: 650px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 1;
+    z-index: 20;
+    background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
+    border: 2px solid #aaa;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 39%;
+    margin-right: 39%;
+    margin-top: 150px;
+  }
+  .content {
+    width: auto;
+  }
+  .large-style {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #aaa;
+    padding-bottom: 12px;
+  }
+}
+@media (max-width: 400px) {
+  .tab {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .largecard {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .largecard img {
+    height: 200px;
+  }
+
+  .chart-container {
+    max-width: 100%;
+    height: 130px;
+  }
+
+  .largecard h2 {
+    font-size: 1.2em;
+  }
+  .pokeball {
+    animation: spin 1s linear infinite;
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+    max-height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+  .largecard {
+    height: 415px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 1;
+    z-index: 20;
+    background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
+    border: 2px solid #aaa;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .buttons {
+    margin-top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn {
+    padding: 6px;
+    background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .content {
+    width: auto;
+  }
+  .large-style {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #aaa;
   }
 }
